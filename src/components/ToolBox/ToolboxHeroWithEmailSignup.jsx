@@ -64,8 +64,6 @@ export const MotionSliderToolCard = ({
   title,
   subtext,
   image,
-  slug,
-  link,
   sponsored,
 }) => {
   return (
