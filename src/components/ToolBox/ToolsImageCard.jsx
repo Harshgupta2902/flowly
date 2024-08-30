@@ -71,8 +71,6 @@ const staticPosts = [
   },
 ];
 
-
-
 const ToolImageCard = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full flex-wrap">

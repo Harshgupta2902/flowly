@@ -3,12 +3,17 @@ import dynamic from "next/dynamic";
 import Container from "@/components/Common/Container";
 import ToolImageCard from "@/components/ToolBox/ToolsImageCard";
 import ToolBoxHeroWithSignup from "@/components/ToolBox/ToolboxHeroWithEmailSignup";
-const StickyFooterCTA = dynamic(() => import("@/components/Footer/StickyFooterCTA"), {
-  ssr: false,
-});
+const StickyFooterCTA = dynamic(
+  () => import("@/components/Footer/StickyFooterCTA"),
+  {
+    ssr: false,
+  }
+);
 
 const NewPagination = dynamic(() => import("@/components/ToolBox/pagination"));
-const FilterCategory = dynamic(() => import("@/components/ToolBox/FilterCategory"));
+const FilterCategory = dynamic(() =>
+  import("@/components/ToolBox/FilterCategory")
+);
 
 const ToolboxIndexPage = ({
   title,
