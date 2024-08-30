@@ -74,10 +74,7 @@ export const MotionSliderToolCard = ({
         sponsored ? "bg-white" : "bg-white"
       } grid grid-items-center p-2 hover:scale-105 hover:shadow-xl transition transition-all duration-400`}
     >
-      <Link
-        target={sponsored ? "_blank" : "_self"}
-        href={sponsored ? link : `/toolbox/${slug}`}
-      >
+      <Link target={sponsored ? "_blank" : "_self"} href={""}>
         <div className="flex flex-row cursor-collab-blue">
           <div className="mr-2 w-[64px] h-[64px] bg-gray-100 overflow-hidden rounded-xl relative">
             <img src={image} className="w-full h-full drop-shadow-sm"></img>
