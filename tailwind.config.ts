@@ -45,7 +45,7 @@ const config: Config = {
         "-3": "-3deg",
         "-1": "-1deg",
       },
-      linearBorderGradients: ({ theme }) => ({
+      linearBorderGradients: ({ theme }: { theme: any }) => ({
         directions: {
           // defaults to these values
           t: "to top",
@@ -169,7 +169,6 @@ const config: Config = {
         "blue-1": "#2463EB",
         "neutrals-700": "#4A5568",
         "black-1": "#222222",
-        success: "#0070f3",
         cyan: "#79FFE1",
       },
       spacing: {
@@ -183,9 +182,6 @@ const config: Config = {
       },
       letterSpacing: {
         tighter: "-.04em",
-      },
-      lineHeight: {
-        tight: 1.2,
       },
       fontSize: {
         "5xl": "2.5rem",

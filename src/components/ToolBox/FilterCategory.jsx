@@ -6,15 +6,15 @@ const items = [
     title: "All",
   },
   {
-    title:'AI',
-    subItems:[
+    title: "AI",
+    subItems: [
       {
         key: "ai",
         name: "AI Design",
         tags: ["ai", "ai-powered"],
-        title:"Artificial Intelligence"
+        title: "Artificial Intelligence",
       },
-    ]
+    ],
   },
   {
     title: "UI",
@@ -23,37 +23,37 @@ const items = [
         key: "accessibility",
         name: "Accessibility",
         tags: ["accessibility", "contrast"],
-        title:"Accessibility Tools"
+        title: "Accessibility Tools",
       },
       {
         key: "color",
         name: "Color",
         tags: ["color", "colour", "colors"],
-        title:"Color Tools"
+        title: "Color Tools",
       },
       {
         key: "css",
         name: "CSS",
         tags: ["css"],
-        title:"CSS Tools"
+        title: "CSS Tools",
       },
       {
         key: "icons",
         name: "Icons",
         tags: ["icons"],
-        title:"Icon Packs"
+        title: "Icon Packs",
       },
       {
         key: "illustration",
         name: "Illustration",
         tags: ["illustration", "illustrations"],
-        title:"Illustration Kits"
+        title: "Illustration Kits",
       },
     ],
   },
   {
     title: "UX",
-    moreLink:{url:'/toolbox/ux-tools/page/1', text:'All UX →'},
+    moreLink: { url: "/toolbox/ux-tools/page/1", text: "All UX →" },
     subItems: [
       {
         key: "analysis",
@@ -65,19 +65,19 @@ const items = [
           "interview",
           "persona",
         ],
-        title:"User Analysis Tools"
+        title: "User Analysis Tools",
       },
       {
         key: "journey",
         name: "User Journey",
         tags: ["journey", "journey-map", "user-flow"],
-        title:"User Journey Tools"
+        title: "User Journey Tools",
       },
       {
         key: "research",
         name: "User Research",
         tags: ["exploration", "research", "user-research"],
-        title:"User Research Tools"
+        title: "User Research Tools",
       },
     ],
   },
@@ -88,13 +88,13 @@ const items = [
         key: "xd",
         name: "Adobe XD",
         tags: ["xd", "adobe-xd", "xd-plugin"],
-        title:"Adobe XD Plugins"
+        title: "Adobe XD Plugins",
       },
       {
         key: "figma",
         name: "Figma",
         tags: ["figma", "figma-plugin"],
-        title:"Figma Plugins"
+        title: "Figma Plugins",
       },
       // {
       //   key: "marvel",
@@ -106,73 +106,74 @@ const items = [
         key: "sketch",
         name: "Sketch",
         tags: ["sketch", "sketch-app", "sketch-plugin"],
-        title:"Sketch Plugins"
+        title: "Sketch Plugins",
       },
     ],
     // moreLink:{url:'/toolbox/plugins/page/1'},
   },
   {
     title: "Prototyping",
-    moreLink:{url:'/prototyping/page/1', text:'All Prototyping →'},
+    moreLink: { url: "/prototyping/page/1", text: "All Prototyping →" },
     subItems: [
       {
         key: "design",
         name: "Design",
         tags: ["prototyping", "design-tool", "prototyping-tool"],
-        title:"Design Tools"
+        title: "Design Tools",
       },
       {
         key: "handoff",
         name: "Handoff",
         tags: ["handoff", "design-to-code"],
-        title:"Design Handoff Tools"
+        title: "Design Handoff Tools",
       },
       {
         key: "interactions",
         name: "Interactions",
         tags: ["microinteractions", "interactions", "animation"],
-        title:"Interaction Design Tools"
+        title: "Interaction Design Tools",
       },
     ],
   },
   {
     title: "Mixed Reality",
-    moreLink:{url:'/toolbox/augmented-reality-tools/page/1', text:'All VR/AR →'},
+    moreLink: {
+      url: "/toolbox/augmented-reality-tools/page/1",
+      text: "All VR/AR →",
+    },
     subItems: [
       {
         key: "ar",
         name: "Augmented Reality",
         tags: ["ar", "augmented-reality"],
-        title:"Mixed Reality Tools"
+        title: "Mixed Reality Tools",
       },
       {
         key: "vr",
         name: "Virtual Reality",
         tags: ["vr", "virtual-reality"],
-        title:"Virtual Reality Tools"
+        title: "Virtual Reality Tools",
       },
     ],
   },
   {
     title: "Chat",
-    moreLink:{url:'/toolbox/conversational-design-tools/page/1', text:'All Chat Tools →'},
+    moreLink: {
+      url: "/toolbox/conversational-design-tools/page/1",
+      text: "All Chat Tools →",
+    },
     subItems: [
       {
         key: "chatbots",
         name: "Chat Bots",
         tags: ["chat", "chat-bot"],
-        title:"Chat Design Tools"
+        title: "Chat Design Tools",
       },
     ],
   },
 ];
 
-
-export default function FilterCategory({
-  slug = "",
-  key,
-  urlRoot,
-}) {
+export default function FilterCategory({ slug = "", key }) {
   return (
     <div className="display-none lg:block text-gray-800">
       <h1 className="font-semibold pb-2 mb-6 text-xl capitalize text-gray-900 tracking-tight">
@@ -194,7 +195,7 @@ export default function FilterCategory({
                       className="cursor-pointer text-md"
                       key={`toolbox_cat_${sIndex}`}
                     >
-                      <Link href={`${urlRoot}/${sItem.key}/page/1`}>
+                      <Link href={""}>
                         <div
                           className={`text-base hover:text-blue-500 py-1.5 rounded ${
                             sItem.key == slug

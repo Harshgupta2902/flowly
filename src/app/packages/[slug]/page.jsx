@@ -212,35 +212,15 @@ const ToolContent = ({
   );
 };
 
-export default function Post({
-  post,
-  relatedPosts,
-  gallery,
-  preview,
-  popularTags,
-  layout,
-  logo,
-  featuredImage,
-  date,
-  updatedAtDate,
-  authorAvatar,
-  navSponsor,
-  sponsors,
-}) {
+export default function Post({}) {
   return (
     <ToolContent
-      date={date}
-      featuredImage={featuredImage}
-      logo={logo}
-      layout={layout}
-      popularTags={popularTags}
-      post={post}
-      gallery={gallery}
-      relatedPosts={relatedPosts}
-      authorAvatar={authorAvatar}
-      updatedAtDate={updatedAtDate}
-      sponsors={sponsors}
-      navSponsor={navSponsor}
+      date={"date"}
+      popularTags={"popularTags"}
+      post={"post"}
+      gallery={"gallery"}
+      relatedPosts={"relatedPosts"}
+      authorAvatar={"authorAvatar"}
     />
   );
 }
