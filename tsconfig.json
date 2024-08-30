@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/NavBar/NavBar.jsx", "src/components/Common/Dialog.jsx", "src/components/NavBar/SearchModal.jsx", "src/components/ToolBox/ToolsImageCard.jsx", "src/components/ToolBox/ToolboxCarouselAnimation.jsx", "src/components/ToolBox/ToolboxHeroWithEmailSignup.jsx", "src/components/ToolBox/toolboxSearchBox.jsx", "src/components/Footer/StickyFooterCTA.jsx", "src/components/ToolBox/pagination.jsx", "src/app/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/NavBar/NavBar.jsx", "src/components/Common/Dialog.jsx", "src/components/NavBar/SearchModal.jsx", "src/components/ToolBox/ToolsImageCard.jsx", "src/components/ToolBox/ToolboxCarouselAnimation.jsx", "src/components/ToolBox/ToolboxHeroWithEmailSignup.jsx", "src/components/ToolBox/toolboxSearchBox.jsx", "src/components/Footer/StickyFooterCTA.jsx", "src/components/ToolBox/pagination.jsx", "src/app/page.jsx", "src/components/details/SocialShare.jsx", "src/components/newsletter/NewsletterSection.jsx", "src/components/details/AuthorCard.jsx", "src/components/details/ToolIconCard.jsx", "src/components/details/HeroCardSectionSimple.jsx", "src/app/packages/[slug]/page.jsx"],
   "exclude": ["node_modules"]
 }
