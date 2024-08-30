@@ -386,7 +386,7 @@ box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   cursor:url("/static/images/arrow.svg"), auto;
 }
 .cursor-collab-blue{
-  cursor:url("/static/images/arrowBlue.svg"), auto;
+  cursor:url("/arrowBlue.svg"), auto;
 }
 
 //
@@ -444,20 +444,20 @@ box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   }
 }
 .toolboxheroGradient {
-    background-image:linear-gradient(179.36deg, rgba(255, 255, 255, 0) 55.45%, #F1F3F9 63.72%),url("/static/images/toolbox-grid.svg"),;
+    background-image:linear-gradient(179.36deg, rgba(255, 255, 255, 0) 55.45%, #F1F3F9 63.72%),url("/toolbox-grid.svg"),;
 }
 .toolboxheroGradient2 {
-    background-image:linear-gradient(179.36deg, rgba(255, 255, 255, 0) 75%, #F1F3F9 88%),url("/static/images/toolbox-grid.svg"),;
+    background-image:linear-gradient(179.36deg, rgba(255, 255, 255, 0) 75%, #F1F3F9 88%),url("/toolbox-grid.svg"),;
 }
 .toolboxheroCheckered{
-    background-image:url("/static/images/toolbox-grid.svg"),;
+    background-image:url("/toolbox-grid.svg"),;
 }
 .toolboxheroGradientHome {
-    background-image:url("/static/images/toolbox/toolbox-bg-2.svg"),;
+    background-image:url("/toolbox-bg-2.svg"),;
 }
 
 .gridBg {
-    background-image: url("/static/images/toolbox/white-grid.svg") ;
+    background-image: url("/white-grid.svg") ;
     background-repeat: repeat;
     background-size: 50%;
 }
@@ -489,7 +489,7 @@ box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 
 .text-underline{
-  background-image:url("/static/images/text-underline.svg");
+  background-image:url("/text-underline.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: bottom center;

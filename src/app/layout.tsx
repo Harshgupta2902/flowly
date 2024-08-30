@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "@/styles/index.scss";
 import "@/styles/toolStyles.css";
 
-import Navbar from "@/components/NavBar";
+import Navbar from "@/components/NavBar/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar maxWidth={"max-w-[1320px]"} navType={""} />
-        {children}
+        <div className={"min-h-screen overflow-x-hidden pt-[84px]"} >
+          <main className="mx-auto ">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

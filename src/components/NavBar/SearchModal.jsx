@@ -18,12 +18,12 @@ import {
   DialogDescription,
   DialogClose,
   IconButton,
-} from "@/components/Dialog";
+} from "@/components/Common/Dialog";
 // import { useRouter } from "next/router";
 import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
 import Link from "next/link";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { MagnifyingGlass } from "@/components/Icons";
+import { MagnifyingGlass } from "@/components/Common/Icons";
 
 const originalSearchClient = instantMeiliSearch(
   "process.env.NEXT_PUBLIC_MEILISEARCH_URL",

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import SearchModal from "@/components/SearchModal";
+import SearchModal from "@/components/NavBar/SearchModal";
 
 const Navbar = ({ maxWidth, navType }) => {
   const [isVisible, setVisible] = useState(false);

@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/NavBar.jsx", "src/components/Dialog.jsx", "src/components/SearchModal.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/NavBar/NavBar.jsx", "src/components/Common/Dialog.jsx", "src/components/NavBar/SearchModal.jsx", "src/components/ToolBox/ToolsImageCard.jsx", "src/components/ToolBox/ToolboxCarouselAnimation.jsx", "src/components/ToolBox/ToolboxHeroWithEmailSignup.jsx", "src/components/ToolBox/toolboxSearchBox.jsx", "src/components/Footer/StickyFooterCTA.jsx", "src/components/ToolBox/pagination.jsx", "src/app/page.jsx"],
   "exclude": ["node_modules"]
 }
