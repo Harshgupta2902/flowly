@@ -4,7 +4,6 @@ import Link from "next/link";
 const HeroCardSection = ({ post, tags, featuredImage, user }) => {
   return (
     <div
-      // className={`col-span-12 border border-1 border-[#dadee5] shadow-sm h-full rounded-2xl mx-auto relative overflow-hidden p-2 leading-tight w-full`}
       className={`relative col-span-12 h-full mx-auto relative overflow-hidden leading-tight w-full`}
     >
       <div className="relative w-full border-b border-gray-100/90 h-[150px] md:h-[250px]">
@@ -17,7 +16,6 @@ const HeroCardSection = ({ post, tags, featuredImage, user }) => {
             objectFit="cover"
             loading="eager"
             priority={true}
-            // loaxder={gumletLoader}
             key={featuredImage}
             src={featuredImage}
           />
