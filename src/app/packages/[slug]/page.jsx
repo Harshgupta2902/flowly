@@ -1,6 +1,6 @@
 "use server";
 
-require('dotenv').config();
+require("dotenv").config();
 import dynamic from "next/dynamic";
 import Container from "@/components/Common/Container";
 const StickyFooterCTA = dynamic(
@@ -46,7 +46,7 @@ const fetchRepoDetails = async (url) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.GITHUB_TOKEN}`,
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
       },
     });
 
