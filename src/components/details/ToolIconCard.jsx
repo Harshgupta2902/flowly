@@ -72,7 +72,7 @@ const ToolIconCard = ({ tool, withBackground, small, logo }) => {
                   placeholder="blur"
                   blurDataURL={logoBase64}
                   height="100"
-                  objectFit="cover"
+                  style={{ objectFit: 'cover' }} // Replace 'cover' with the desired value
                   src={
                     coverImage ||
                     "https://prototypr-media.sfo2.digitaloceanspaces.com/strapi/176d3d79cb9ad1acc057fb0eb3fe72d0.jpeg"
