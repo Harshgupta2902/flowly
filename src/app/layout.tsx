@@ -20,6 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      </head>
       <body className={inter.className}>
         <Navbar maxWidth={"max-w-[1320px]"} navType={""} />
         <div className={"min-h-screen overflow-x-hidden pt-[84px]"} >

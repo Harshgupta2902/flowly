@@ -100,16 +100,15 @@ const ToolContent = ({ data, readMecontent }) => {
                 <div className="max-w-[680px] w-full mx-auto">
                   <div className="blog-content toolbox-content">
                     <div
+                      className="text-xs mt-3"
                       style={{
-                        color: "#222",
-                        fontSize: "18px",
-                        lineHeight: "33px",
+                        fontSize: "2px",
+
                       }}
-                      className="mt-3 popup-modal-content"
                       dangerouslySetInnerHTML={{
                         __html: marked(readMecontent),
                       }}
-                    ></div>
+                    />
                   </div>
                 </div>
               </div>
