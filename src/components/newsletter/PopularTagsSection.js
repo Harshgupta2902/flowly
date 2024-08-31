@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { usePlausible } from "next-plausible";
 import { Tag } from "@/components/Common/Icons";
 
 const popularTags = [
@@ -26,7 +25,6 @@ const PopularTagsSection = () => {
 export default PopularTagsSection;
 
 const CategoriesIconCard = ({ withBackground, showCount }) => {
-  const plausible = usePlausible();
   return (
     <div>
       <Link href={`/topic/page/1`} className="flex">
