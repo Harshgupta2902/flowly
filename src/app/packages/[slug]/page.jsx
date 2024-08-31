@@ -1,3 +1,5 @@
+"use server";
+
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Container from "@/components/Common/Container";
@@ -11,17 +13,78 @@ const StickyFooterCTA = dynamic(
 import NewsletterSection from "@/components/newsletter/NewsletterSection";
 import PopularTagsSection from "@/components/newsletter/PopularTagsSection";
 import AuthorCard from "@/components/details/AuthorCard";
-import ToolIconCard from "@/components/details/ToolIconCard";
 import HeroCardSection from "@/components/details/HeroCardSectionSimple";
 import LikeButton from "@/components/details/LikeButton";
+import { headers } from "next/headers";
+
+const getPackageDetails = async (packages) => {
+  try {
+    const response = await fetch(
+      `https://fleetreeapi.vercel.app/details/${packages}`,
+      {
+        cache: "no-store",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+};
+
+const Post = async () => {
+  const headersList = headers();
+  const completePathname = headersList.get("x-url");
+
+  console.log(completePathname.replaceAll("/packages/", ""));
+
+  let data = null;
+
+  try {
+    const response = await getPackageDetails(
+      completePathname.replaceAll("/packages/", "")
+    );
+    data = response;
+    console.log(response);
+  } catch (err) {
+    console.error(`error ${err}`);
+  }
+
+  return (
+    <ToolContent
+      date={data?.data?.publishedAgo}
+      popularTags={"popularTags"}
+      compatibility={data?.data?.compatibility}
+      gallery={"gallery"}
+      publisher={data?.data?.publisher}
+      likes={data?.data?.likes}
+      popularity={data?.data?.popularity}
+      points={data?.data?.pubPoints}
+      meta={data?.data?.metadata}
+      license={data?.data?.licenseName}
+      licenseLink={data?.data?.licenseLink}
+    />
+  );
+};
+export default Post;
 
 const ToolContent = ({
-  post,
+  compatibility,
   gallery,
-  relatedPosts,
   popularTags,
   date,
-  authorAvatar,
+  publisher,
+  popularity,
+  likes,
+  points,
+  meta,
+  license,
+  licenseLink,
 }) => {
   return (
     <>
@@ -34,7 +97,6 @@ const ToolContent = ({
             <div className="col-span-3 border border-gray-300/60 rounded-2xl overflow-hidden lg:col-span-8 flex flex-col gap-3 bg-white lg:h-fit">
               <div className="grid gap-3 md:px-0 -mb-4">
                 <HeroCardSection
-                  post={post}
                   featuredImage={
                     "https://prototyprio.gumlet.io/strapi/b1f1098f2ac161fab1ef44ba445902d4.png"
                   }
@@ -49,7 +111,7 @@ const ToolContent = ({
                 className={`order-1 col-span-3 lg:order-3 bg-white p-6 lg:pt-0 lg:pb-12 rounded-2xl flex justify-between`}
               >
                 <div className="max-w-[680px] w-full mx-auto">
-                  <h2 class="text-2xl font-medium mb-4 tracking-tight">
+                  <h2 className="text-2xl font-medium mb-4 tracking-tight">
                     Overview
                   </h2>
                   <div className="blog-content toolbox-content">
@@ -70,97 +132,56 @@ const ToolContent = ({
             </div>
             <div className="col-span-3 h-fit lg:col-span-3 flex flex-col gap-3">
               <div className="p-1 pt-0.5 rounded-2xl h-fit border-gray-300/60">
+                <div className="flex flex-row gap-12 mb-4 p-4 rounded-2xl bg-[#f4f4f4]/60">
+                  <div className="text-gray-500 text-center">
+                    <div className="text-[#0175c2] tracking-tight font-bold">
+                      {likes}
+                    </div>
+                    <h3 className="text-sm tracking-tight">Likes</h3>
+                  </div>
+                  <div className="text-gray-500 text-center">
+                    <div className="text-[#0175c2] tracking-tight font-bold">
+                      {points}
+                    </div>
+                    <h3 className="text-sm tracking-tight">Points</h3>
+                  </div>
+                  <div className="text-gray-500 text-center">
+                    <div className="text-[#0175c2] tracking-tight font-bold">
+                      {`${popularity}%`}
+                    </div>
+                    <h3 className="text-sm tracking-tight">Popularity</h3>
+                  </div>
+                </div>
                 <div className="order-1 p-4 mb-4 rounded-2xl bg-[#f4f4f4]/60">
-                  <h3 className="text-sm tracking-tight text-gray-500 ">
-                    Creators
-                  </h3>
                   <AuthorCard
-                    creator={true}
-                    key={1}
-                    title={"Curator"}
-                    author={"creator"}
-                    avatar={"creator"}
-                    authorAvatar={
-                      "https://s3-us-west-1.amazonaws.com/tinify-bucket/%2Fprototypr%2Ftemp%2F1595435549331-1595435549330.png"
-                    }
+                    title={"Publisher"}
+                    value={publisher}
+                    link={`https://pub.dev/publishers/${publisher}`}
                   />
                 </div>
-                {post?.attributes?.author &&
-                  !post?.attributes?.creators?.data?.length && (
-                    <div className="p-4 rounded-2xl bg-[#f4f4f4]/60">
-                      <AuthorCard
-                        authorAvatar={authorAvatar}
-                        title={post?.attributes?.creator ? "Curator" : null}
-                        author={post.attributes.author}
-                        avatar={post.attributes?.author}
-                      />
-                    </div>
-                  )}
-
-                <div className="flex flex-col gap-4 mt-4 p-4 rounded-2xl bg-[#f4f4f4]/60">
+                <div className="flex flex-col gap-4 my-4 p-4 rounded-2xl bg-[#f4f4f4]/60">
                   <div className="text-gray-500">
-                    <h3 className="text-sm tracking-tight  ">Published</h3>
-                    <div className="text-base tracking-tight font-medium text-gray-500">
+                    <h3 className="text-sm tracking-tight">Published</h3>
+                    <div className="text-gray-800 tracking-tight font-medium">
                       {date}
                     </div>
                   </div>
-                  {post?.attributes?.author &&
-                  post?.attributes?.creators?.data?.length &&
-                  post?.attributes?.author?.id !=
-                    post?.attributes?.creators?.data[0]?.id ? (
-                    <AuthorCard
-                      size={"small"}
-                      authorAvatar={authorAvatar}
-                      title={post?.attributes?.creator ? "Curator" : null}
-                      author={post.attributes.author}
-                      avatar={post.attributes?.author}
-                    />
-                  ) : null}
-
                   <div className="text-gray-500 mt-1">
-                    <h3 className="text-sm tracking-tight ">Tags</h3>
-                    <Link href={`/toolbox/page/1/`}>
-                      <div className="text-gray-800 tracking-tight font-medium">
-                        {"tag.attributes.name"}
-                      </div>
-                    </Link>
-                  </div>
-                  <div className="mt-2">
-                    <SocialShare
-                      size={28}
-                      title={"post.attributes.title"}
-                      slug={"post.attributes.slug"}
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-4 mt-4 rounded-2xl bg-[#f4f4f4]/60">
-                  <div className="relative rounded-2xl pb-3">
-                    <h1
-                      tabIndex={0}
-                      className="text-sm mb-3 text-gray-500 tracking-tight px-3 pt-3"
-                    >
-                      Related tools
-                    </h1>
-
-                    <div className="flex flex-col pt-1 grid grid-cols-6 gap-6">
-                      {relatedPosts?.map((tool, index) => {
-                        return (
-                          <div
-                            key={index}
-                            className="flex flex-col px-3 col-span-6 sm:col-span-3 lg:col-span-6 xl:col-span-6"
-                          >
-                            <div className="">
-                              <ToolIconCard
-                                withBackground={false}
-                                tool={tool}
-                              />
-                            </div>
-                          </div>
-                        );
-                      })}
+                    <h3 className="text-sm tracking-tight">Compatibility</h3>
+                    <div className="text-gray-800 tracking-tight font-medium">
+                      {compatibility}
                     </div>
                   </div>
+                </div>
+                <div className="order-1 p-4 mb-4 rounded-2xl bg-[#f4f4f4]/60">
+                  <AuthorCard title={"Meta Data"} value={meta} />
+                </div>
+                <div className="order-1 p-4 mb-4 rounded-2xl bg-[#f4f4f4]/60">
+                  <AuthorCard
+                    title={"License"}
+                    value={license}
+                    link={`https://pub.dev${licenseLink}`}
+                  />
                 </div>
               </div>
 
@@ -211,16 +232,3 @@ const ToolContent = ({
     </>
   );
 };
-
-export default function Post({}) {
-  return (
-    <ToolContent
-      date={"date"}
-      popularTags={"popularTags"}
-      post={"post"}
-      gallery={"gallery"}
-      relatedPosts={"relatedPosts"}
-      authorAvatar={"authorAvatar"}
-    />
-  );
-}
