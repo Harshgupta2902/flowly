@@ -35,31 +35,16 @@ const getPackageDetails = async (packages) => {
   }
 };
 
-const fetchRepoDetails = async (url) => {
+async function getReadMeHtml(url) {
   try {
-    const [_, owner, repo] = url.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+    const response = await fetch(url);
+    const markdown = await response.text();
 
-    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/readme`;
-    console.log(apiUrl);
-
-    const response = await fetch(apiUrl, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    return await response.json();
+    return marked(markdown);
   } catch (error) {
-    console.error("Error fetching repository details:", error);
-    return null;
+    console.error("Error fetching or converting markdown:", error);
   }
-};
+}
 
 const Post = async () => {
   const headersList = headers();
@@ -76,8 +61,11 @@ const Post = async () => {
     );
     data = response;
     if (data?.data) {
-      const response = await fetchRepoDetails(data?.data?.repositoryUrl);
-      readMecontent = marked(atob(response.content));
+      const response = await getReadMeHtml(
+        data?.data?.readme ??
+          "https://raw.githubusercontent.com/flutter/.github/main/profile/README.md"
+      );
+      readMecontent = marked(response);
     }
   } catch (err) {
     console.error(`error ${err}`);
@@ -94,11 +82,15 @@ const ToolContent = ({ data, readMecontent }) => {
         <Container maxWidth="w-full z-10">
           <div className="grid grid-cols-3 lg:grid-cols-12 gap-3 xl:gap-7 max-w-[1320px] mx-auto md:px-0 h-full">
             <div className="col-span-3 overflow-hidden lg:col-span-9 flex flex-col gap-3 bg-white lg:h-fit">
-              <div className={`order-1 col-span-3 lg:order-3 bg-white p-6 lg:pt-0 lg:pb-12 rounded-2xl flex justify-between`}>
-                <div
-                  className="tab-content detail-tab-readme-content -active markdown-body"
-                  dangerouslySetInnerHTML={{ __html: marked(readMecontent) }}
-                />
+              <div
+                className={`order-1 col-span-3 lg:order-3 bg-white p-6 lg:pt-0 lg:pb-12 rounded-2xl flex justify-between`}
+              >
+                {readMecontent && (
+                  <div
+                    className="tab-content detail-tab-readme-content -active markdown-body"
+                    dangerouslySetInnerHTML={{ __html: marked(readMecontent) }}
+                  />
+                )}
               </div>
             </div>
             <div className="col-span-3 h-fit lg:col-span-3 flex flex-col gap-3">
