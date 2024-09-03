@@ -93,24 +93,12 @@ const ToolContent = ({ data, readMecontent }) => {
       <div className="w-full mx-auto">
         <Container maxWidth="w-full z-10">
           <div className="grid grid-cols-3 lg:grid-cols-12 gap-3 xl:gap-7 max-w-[1320px] mx-auto md:px-0 h-full">
-            <div className="col-span-3 border border-gray-300/60 rounded-2xl overflow-hidden lg:col-span-9 flex flex-col gap-3 bg-white lg:h-fit">
-              <div
-                className={`order-1 col-span-3 lg:order-3 bg-white p-6 lg:pt-0 lg:pb-12 rounded-2xl flex justify-between`}
-              >
-                <div className="max-w-[680px] w-full mx-auto">
-                  <div className="blog-content toolbox-content">
-                    <div
-                      className="text-xs mt-3"
-                      style={{
-                        fontSize: "2px",
-
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html: marked(readMecontent),
-                      }}
-                    />
-                  </div>
-                </div>
+            <div className="col-span-3 overflow-hidden lg:col-span-9 flex flex-col gap-3 bg-white lg:h-fit">
+              <div className={`order-1 col-span-3 lg:order-3 bg-white p-6 lg:pt-0 lg:pb-12 rounded-2xl flex justify-between`}>
+                <div
+                  className="tab-content detail-tab-readme-content -active markdown-body"
+                  dangerouslySetInnerHTML={{ __html: marked(readMecontent) }}
+                />
               </div>
             </div>
             <div className="col-span-3 h-fit lg:col-span-3 flex flex-col gap-3">
